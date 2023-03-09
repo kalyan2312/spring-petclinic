@@ -1,3 +1,4 @@
+
 pipeline {
 	agent any
 	tools {
@@ -7,6 +8,12 @@ pipeline {
 		stage('Maven install') {
 			steps {
 				sh 'mvn clean install'
+			}
+	
+		}
+		stage('Dockerbuild') {
+			steps {
+				sh 'docker build -t springpetclinc:latest .'
 			}
 		}
 	}
